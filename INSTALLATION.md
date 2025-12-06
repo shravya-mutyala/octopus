@@ -20,11 +20,11 @@
 
 #### Step 1: Download
 ```bash
-git clone [YOUR_GITHUB_REPO_URL]
-cd meeting-cost-calculator
+git clone https://github.com/shravya-mutyala/octopus.git
+cd octopus
 ```
 
-Or download ZIP from GitHub and extract it.
+Or download ZIP from https://github.com/shravya-mutyala/octopus and extract it.
 
 #### Step 2: Install in Chrome
 1. Open Chrome browser
@@ -110,7 +110,7 @@ Or download ZIP from GitHub and extract it.
 
 ## Quick Demo
 
-Watch the 30-second demo video: [LINK TO YOUR VIDEO]
+Watch the 30-second demo video: [Add your video link here]
 
 Or see screenshots in the README.md
 
@@ -118,9 +118,11 @@ Or see screenshots in the README.md
 
 ## Support
 
-Questions? Issues? Contact: [YOUR EMAIL]
+Questions? Issues? 
 
-GitHub Issues: [YOUR REPO]/issues
+GitHub: https://github.com/shravya-mutyala/octopus
+
+GitHub Issues: https://github.com/shravya-mutyala/octopus/issues
 
 ---
 

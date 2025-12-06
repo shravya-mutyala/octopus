@@ -1,6 +1,6 @@
 # 💰 Meeting Cost Calculator - Chrome Extension
 
-[![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-blue?logo=googlechrome)](https://github.com/yourusername/meeting-cost-calculator)
+[![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-blue?logo=googlechrome)](https://github.com/shravya-mutyala/octopus)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Hackathon](https://img.shields.io/badge/Octopus-Hackathon%202024-purple)](https://octopushackathon.devpost.com)
 

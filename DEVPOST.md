@@ -52,5 +52,8 @@ For a 100-person company with $75K average salary:
 - Chrome Extensions API
 
 ## Try it out
-[GitHub Repository Link]
-[Demo Video Link]
+**GitHub Repository:** https://github.com/shravya-mutyala/octopus
+
+**Quick Test:** Download the repo and open `test.html` in your browser - works instantly!
+
+**Demo Video:** [Add your video link here]
