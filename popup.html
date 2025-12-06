@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Meeting Cost Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>💰 Meeting Cost Calculator</h1>
+
+        <div class="section">
+            <label for="attendees">Number of Attendees:</label>
+            <input type="number" id="attendees" min="1" value="5" />
+        </div>
+
+        <div class="section">
+            <label for="avgSalary">Average Hourly Rate ($):</label>
+            <input type="number" id="avgSalary" min="1" value="50" />
+        </div>
+
+        <div class="section">
+            <label for="duration">Meeting Duration (minutes):</label>
+            <input type="number" id="duration" min="1" value="60" />
+        </div>
+
+        <button id="calculate">Calculate Cost</button>
+
+        <div id="result" class="result hidden">
+            <h2>Meeting Cost</h2>
+            <div class="cost-display">
+                <span class="currency">$</span>
+                <span id="totalCost" class="amount">0</span>
+            </div>
+            <div class="breakdown">
+                <p><strong>Per Minute:</strong> $<span id="perMinute">0</span></p>
+                <p><strong>Annual Impact:</strong> $<span id="annualCost">0</span></p>
+                <p class="note">(if this meeting happens weekly)</p>
+            </div>
+        </div>
+
+        <div class="timer-section">
+            <h3>Live Meeting Timer</h3>
+            <div class="timer-display">
+                <span id="timerCost">$0.00</span>
+            </div>
+            <div class="timer-controls">
+                <button id="startTimer">Start</button>
+                <button id="stopTimer" disabled>Stop</button>
+                <button id="resetTimer">Reset</button>
+            </div>
+            <div id="timerTime" class="timer-time">00:00:00</div>
+        </div>
+
+        <div class="footer">
+            <p>💡 Make every meeting count!</p>
+        </div>
+    </div>
+    <script src="popup.js"></script>
+</body>
+
+</html>

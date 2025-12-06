@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Meeting Cost Calculator - Test</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>💰 Meeting Cost Calculator - TEST MODE</h1>
+        <p style="background: #fff3cd; padding: 10px; border-radius: 5px; margin-bottom: 15px;">
+            ✅ Testing in browser before Chrome extension install
+        </p>
+
+        <div class="section">
+            <label for="attendees">Number of Attendees:</label>
+            <input type="number" id="attendees" min="1" value="5" />
+        </div>
+
+        <div class="section">
+            <label for="avgSalary">Average Hourly Rate ($):</label>
+            <input type="number" id="avgSalary" min="1" value="50" />
+        </div>
+
+        <div class="section">
+            <label for="duration">Meeting Duration (minutes):</label>
+            <input type="number" id="duration" min="1" value="60" />
+        </div>
+
+        <button id="calculate">Calculate Cost</button>
+
+        <div id="result" class="result hidden">
+            <h2>Meeting Cost</h2>
+            <div class="cost-display">
+                <span class="currency">$</span>
+                <span id="totalCost" class="amount">0</span>
+            </div>
+            <div class="breakdown">
+                <p><strong>Per Minute:</strong> $<span id="perMinute">0</span></p>
+                <p><strong>Annual Impact:</strong> $<span id="annualCost">0</span></p>
+                <p class="note">(if this meeting happens weekly)</p>
+            </div>
+        </div>
+
+        <div class="timer-section">
+            <h3>Live Meeting Timer</h3>
+            <div class="timer-display">
+                <span id="timerCost">$0.00</span>
+            </div>
+            <div class="timer-controls">
+                <button id="startTimer">Start</button>
+                <button id="stopTimer" disabled>Stop</button>
+                <button id="resetTimer">Reset</button>
+            </div>
+            <div id="timerTime" class="timer-time">00:00:00</div>
+        </div>
+
+        <div class="footer">
+            <p>💡 Make every meeting count!</p>
+        </div>
+    </div>
+    <script>
+        // Test version without Chrome storage
+        const attendeesInput = document.getElementById('attendees');
+        const avgSalaryInput = document.getElementById('avgSalary');
+        const durationInput = document.getElementById('duration');
+        const calculateBtn = document.getElementById('calculate');
+        const resultDiv = document.getElementById('result');
+        const totalCostSpan = document.getElementById('totalCost');
+        const perMinuteSpan = document.getElementById('perMinute');
+        const annualCostSpan = document.getElementById('annualCost');
+
+        const startTimerBtn = document.getElementById('startTimer');
+        const stopTimerBtn = document.getElementById('stopTimer');
+        const resetTimerBtn = document.getElementById('resetTimer');
+        const timerCostSpan = document.getElementById('timerCost');
+        const timerTimeSpan = document.getElementById('timerTime');
+
+        let timerInterval = null;
+        let timerSeconds = 0;
+
+        calculateBtn.addEventListener('click', () => {
+            const attendees = parseInt(attendeesInput.value);
+            const avgSalary = parseFloat(avgSalaryInput.value);
+            const duration = parseInt(durationInput.value);
+
+            const totalCost = (attendees * avgSalary * duration) / 60;
+            const perMinute = totalCost / duration;
+            const annualCost = totalCost * 52;
+
+            totalCostSpan.textContent = totalCost.toFixed(2);
+            perMinuteSpan.textContent = perMinute.toFixed(2);
+            annualCostSpan.textContent = annualCost.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+            resultDiv.classList.remove('hidden');
+            console.log('✅ Calculator working! Cost:', totalCost);
+        });
+
+        startTimerBtn.addEventListener('click', () => {
+            const attendees = parseInt(attendeesInput.value);
+            const avgSalary = parseFloat(avgSalaryInput.value);
+
+            if (!attendees || !avgSalary) {
+                alert('Please set attendees and hourly rate first!');
+                return;
+            }
+
+            startTimerBtn.disabled = true;
+            stopTimerBtn.disabled = false;
+
+            timerInterval = setInterval(() => {
+                timerSeconds++;
+
+                const costPerSecond = (attendees * avgSalary) / 3600;
+                const currentCost = costPerSecond * timerSeconds;
+
+                timerCostSpan.textContent = `$${currentCost.toFixed(2)}`;
+
+                const hours = Math.floor(timerSeconds / 3600);
+                const minutes = Math.floor((timerSeconds % 3600) / 60);
+                const seconds = timerSeconds % 60;
+
+                timerTimeSpan.textContent =
+                    `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+                console.log('⏱️ Timer running:', timerSeconds, 'seconds, Cost:', currentCost.toFixed(2));
+            }, 1000);
+        });
+
+        stopTimerBtn.addEventListener('click', () => {
+            clearInterval(timerInterval);
+            startTimerBtn.disabled = false;
+            stopTimerBtn.disabled = true;
+            console.log('⏸️ Timer stopped');
+        });
+
+        resetTimerBtn.addEventListener('click', () => {
+            clearInterval(timerInterval);
+            timerSeconds = 0;
+            timerCostSpan.textContent = '$0.00';
+            timerTimeSpan.textContent = '00:00:00';
+            startTimerBtn.disabled = false;
+            stopTimerBtn.disabled = true;
+            console.log('🔄 Timer reset');
+        });
+
+        console.log('✅ Test page loaded successfully!');
+    </script>
+</body>
+
+</html>
